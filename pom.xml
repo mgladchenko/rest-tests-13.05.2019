@@ -13,8 +13,9 @@
         <jackson.databind.version>2.9.9</jackson.databind.version>
         <slf4j.version>1.7.26</slf4j.version>
         <maven.compiler.plugin.version>3.7.0</maven.compiler.plugin.version>
+        <surefire.version>2.20</surefire.version>
         <source.encoding>UTF-8</source.encoding>
-        <java.version>11</java.version>
+        <java.version>8</java.version>
     </properties>
 
     <dependencies>
@@ -59,9 +60,19 @@
                 </configuration>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${surefire.version}</version>
+                <configuration>
+                    <testFailureIgnore>true</testFailureIgnore>
+                    <skip>false</skip>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>net.serenity-bdd.maven.plugins</groupId>
                 <artifactId>serenity-maven-plugin</artifactId>
                 <version>${serenity.version}</version>
+
                 <executions>
                     <execution>
                         <id>serenity-reports</id>
