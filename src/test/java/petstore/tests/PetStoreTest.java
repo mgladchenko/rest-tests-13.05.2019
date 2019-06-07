@@ -14,7 +14,7 @@ import static petstore.endpoints.PetEndpoint.*;
 @RunWith(SerenityRunner.class)
 public class PetStoreTest {
     @Steps
-    private PetEndpoint petEndpoint = new PetEndpoint();
+    private PetEndpoint petEndpoint;
 
     @Test
     public void getPetByIdTest() {
