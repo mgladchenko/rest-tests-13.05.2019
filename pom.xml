@@ -16,6 +16,7 @@
         <surefire.version>2.20</surefire.version>
         <source.encoding>UTF-8</source.encoding>
         <java.version>8</java.version>
+        <test.name>*</test.name>
     </properties>
 
     <dependencies>
@@ -64,6 +65,9 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${surefire.version}</version>
                 <configuration>
+                    <includes>
+                        <include>**/tests/**/${test.name}.java</include>
+                    </includes>
                     <testFailureIgnore>true</testFailureIgnore>
                     <skip>false</skip>
                 </configuration>
