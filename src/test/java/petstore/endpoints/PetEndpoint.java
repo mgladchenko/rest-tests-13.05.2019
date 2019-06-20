@@ -1,12 +1,16 @@
 package petstore.endpoints;
 
+import io.restassured.builder.MultiPartSpecBuilder;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Step;
+import org.eclipse.jetty.util.MultiPartInputStreamParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import petstore.models.PetModel;
+
+import java.io.File;
 
 
 public class PetEndpoint {
@@ -68,6 +72,18 @@ public class PetEndpoint {
                 .put(Config.UPDATE_PET_BY_ID)
                 .then();
                 //.log().all();
+    }
+
+    @Step
+    public ValidatableResponse uploadPetImage(int petId, File file) {
+        return given()
+                .contentType("multipart/form-data")
+                .multiPart(new MultiPartSpecBuilder(file)
+                        .fileName(file.getName())
+                        .build())
+                .formParam("additionalMetadata", "Pet Image")
+                .post(Config.UPLOAD_PET_IMAGE, petId)
+                .then();
     }
 
 

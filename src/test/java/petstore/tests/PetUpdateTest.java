@@ -8,6 +8,11 @@ import petstore.models.CategoryModel;
 import petstore.models.PetModel;
 import petstore.models.TagModel;
 
+import java.io.File;
+
+import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.containsString;
+
 public class PetUpdateTest {
     private PetEndpoint petEndpoint = new PetEndpoint();
     private PetModel petModel;
@@ -45,5 +50,15 @@ public class PetUpdateTest {
         petEndpoint
                 .getPetById(petModel.getId())
                 .statusCode(200);
+    }
+
+    @Test
+    public void uploadPetImage() {
+        File petImage = new File(getClass().getClassLoader().getResource("che.jpg").getFile());
+        petEndpoint
+                .uploadPetImage(2, petImage)
+                .log().all()
+                .statusCode(200)
+                .body("message", containsString(petImage.getName()));
     }
 }

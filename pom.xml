@@ -17,6 +17,7 @@
         <source.encoding>UTF-8</source.encoding>
         <java.version>8</java.version>
         <test.name>*</test.name>
+        <env>qa</env>
     </properties>
 
     <dependencies>
