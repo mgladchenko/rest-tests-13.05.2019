@@ -10,7 +10,7 @@
 
     <properties>
         <serenity.version>2.0.50</serenity.version>
-        <jackson.databind.version>2.9.9</jackson.databind.version>
+        <jackson.databind.version>2.9.10.4</jackson.databind.version>
         <slf4j.version>1.7.26</slf4j.version>
         <maven.compiler.plugin.version>3.7.0</maven.compiler.plugin.version>
         <surefire.version>2.20</surefire.version>
